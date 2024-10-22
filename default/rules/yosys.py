@@ -17,6 +17,24 @@ SourceLocation(
 )
 
 SourceLocation(
+	name = 'slang',
+	vcs = 'git',
+	location = 'https://github.com/MikePopoloski/slang',
+	revision = 'origin/master',
+	license_file = 'LICENSE',
+	license_build_only = True,
+)
+
+SourceLocation(
+	name = 'yosys-slang-plugin',
+	vcs = 'git',
+	location = 'https://github.com/povik/yosys-slang',
+	revision = 'origin/master',
+	license_file = 'LICENSE',
+	arch = [ 'linux-x64', 'linux-arm64', 'windows-x64' ],
+)
+
+SourceLocation(
 	name = 'graphviz',
 	vcs = 'git',
 	location = 'https://gitlab.com/graphviz/graphviz',
@@ -52,6 +70,19 @@ Target(
 	sources = [ 'ghdl-yosys-plugin' ],
 	dependencies = [ 'ghdl', 'yosys' ],
 	arch = [ 'linux-x64', 'darwin-x64', 'darwin-arm64' ],
+)
+
+Target(
+	name = 'slang',
+	sources = [ 'slang'],
+	build_native = True, # using this for license only
+	license_build_only = True,
+)
+
+Target(
+	name = 'yosys-slang-plugin',
+	sources = [ 'yosys-slang-plugin' ],
+	dependencies = [ 'yosys' ],
 )
 
 SourceLocation(
