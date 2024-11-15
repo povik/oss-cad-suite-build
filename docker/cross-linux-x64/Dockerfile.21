@@ -2,3 +2,7 @@ FROM yosyshq/cross-linux-x64:2.0
 
 RUN RUSTUP_HOME=/opt/rust/rustup CARGO_HOME=/opt/rust/cargo rustup toolchain install nightly
 RUN RUSTUP_HOME=/opt/rust/rustup CARGO_HOME=/opt/rust/cargo rustup override set nightly
+
+RUN apt update && apt install -y lsb-release wget software-properties-common gnupg && wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh 18
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 100
